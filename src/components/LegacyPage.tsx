@@ -1,0 +1,173 @@
+import { useEffect, useRef } from "react";
+import { useNavigate } from "@tanstack/react-router";
+
+function showElement(element: HTMLElement, display = "block") {
+  element.style.removeProperty("display");
+  if (getComputedStyle(element).display === "none") element.style.display = display;
+}
+
+function hideElement(element: HTMLElement) {
+  element.style.display = "none";
+}
+
+/**
+ * Renders an archived phantomsecure.com page (2017 markup) and reimplements
+ * the original jQuery behaviour without animation: tile auto-height, image
+ * hover swap and the mobile burger menu.
+ */
+export function LegacyPage({ html }: { html: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+
+    const resize = () => {
+      root.querySelectorAll<HTMLElement>("div.tile").forEach((tile) => {
+        // Tiles whose only backdrop is an invisible spacer image should hug
+        // their content instead of the (approximate) artwork aspect ratio.
+        const backdrop = tile.querySelector<HTMLImageElement>("img.tileimg");
+        if (backdrop && getComputedStyle(backdrop).opacity === "0") {
+          const content = Array.from(tile.children).filter((c) => c !== backdrop) as HTMLElement[];
+          const bottom = content.reduce((max, el) => Math.max(max, el.offsetTop + el.offsetHeight), 0);
+          if (bottom) tile.style.height = `${bottom * 1.04}px`;
+          return;
+        }
+        const heights = Array.from(tile.querySelectorAll("img")).map((i) => i.clientHeight);
+        const max = heights.length ? Math.max(...heights) : 0;
+        if (!max) return;
+        const factor = tile.getAttribute("data-height-factor");
+        if (factor) tile.style.height = `${max * Number(factor)}px`;
+        else if (tile.getAttribute("data-nomargin") === "1") tile.style.height = `${max}px`;
+        else tile.style.height = `${max * 1.05}px`;
+      });
+      root.querySelectorAll<HTMLElement>(".hresize").forEach((el) => {
+        const f = el.getAttribute("data-resizefactor");
+        if (f) el.style.height = `${el.clientWidth / Number(f)}px`;
+      });
+    };
+
+    const cleanups: Array<() => void> = [];
+
+    // hover image swap
+    root.querySelectorAll<HTMLImageElement>("img[hoversrc]").forEach((img) => {
+      const org = img.getAttribute("src") ?? "";
+      const hover = img.getAttribute("hoversrc") ?? "";
+      const enter = () => (img.src = hover);
+      const leave = () => (img.src = org);
+      img.addEventListener("mouseenter", enter);
+      img.addEventListener("mouseleave", leave);
+      cleanups.push(() => {
+        img.removeEventListener("mouseenter", enter);
+        img.removeEventListener("mouseleave", leave);
+      });
+    });
+
+    // burger menu
+    const menu = root.querySelector<HTMLElement>(".mmenu");
+    const burger = root.querySelector<HTMLElement>(".mobile a");
+    const toggleMenu = (e: Event) => {
+      e.preventDefault();
+      if (menu) menu.style.display = menu.style.display === "block" ? "none" : "block";
+    };
+    burger?.addEventListener("click", toggleMenu);
+    if (burger) cleanups.push(() => burger.removeEventListener("click", toggleMenu));
+
+    // Reimplement the small, known subset of jQuery actions used by the archive.
+    root.querySelectorAll<HTMLElement>("[onclick]").forEach((element) => {
+      const action = element.getAttribute("onclick") ?? "";
+      element.removeAttribute("onclick");
+      const activate = (event: Event) => {
+        event.preventDefault();
+
+        const selectors = Array.from(action.matchAll(/\$\(["']([^"']+)["']\)/g), (match) => match[1]);
+        if (action.includes(".ans")) {
+          root.querySelectorAll<HTMLElement>(".ans").forEach(hideElement);
+        }
+
+        selectors.forEach((selector) => {
+          if (selector === ".ans") return;
+          root.querySelectorAll<HTMLElement>(selector).forEach((target) => {
+            if (action.includes("slideToggle") || action.includes(".toggle()")) {
+              if (target === element) hideElement(target);
+              else if (getComputedStyle(target).display === "none") showElement(target);
+              else hideElement(target);
+            } else if (action.includes("fadeIn")) {
+              showElement(target);
+            } else if (action.includes("fadeOut")) {
+              hideElement(target);
+            }
+          });
+        });
+
+        const video = (element.closest("#player")?.querySelector("video") ??
+          root.querySelector<HTMLVideoElement>("#divVideo video, #player2 video, video#video")) as
+          | HTMLVideoElement
+          | null;
+        if (action.includes("videojs") && video) {
+          if (action.includes("pause")) video.pause();
+          else {
+            video.load();
+            void video.play().catch(() => undefined);
+          }
+        }
+      };
+      element.addEventListener("click", activate);
+      cleanups.push(() => element.removeEventListener("click", activate));
+    });
+
+    // Native equivalents for archived onchange handlers.
+    root.querySelectorAll<HTMLSelectElement>("select[onchange]").forEach((select) => {
+      const action = select.getAttribute("onchange") ?? "";
+      select.removeAttribute("onchange");
+      if (!action.includes("#modelimg") || !action.includes("img_pd_")) return;
+      const changeModel = () => {
+        const model = root.querySelector<HTMLImageElement>("#modelimg");
+        if (model) model.src = `/ps/img_pd_${select.value}.png`;
+      };
+      select.addEventListener("change", changeModel);
+      cleanups.push(() => select.removeEventListener("change", changeModel));
+    });
+
+    // Animations are disabled: scroll reveals and the skrollr parallax are gone.
+    // Elements keep their authored start transform so the layout stays correct.
+    const parseTransform = (value: string | null) => {
+      const match = value?.match(/translate\((-?[\d.]+)%,\s*(-?[\d.]+)%\)/);
+      return match ? [Number(match[1]), Number(match[2])] : [0, 0];
+    };
+    root.querySelectorAll<HTMLElement>(".skrollable").forEach((element) => {
+      const [x, y] = parseTransform(element.getAttribute("data-0"));
+      element.style.transform = `translate(${x}%, ${y}%)`;
+    });
+
+    // client-side navigation for internal links
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement)?.closest?.("a");
+      const href = a?.getAttribute("href");
+      if (!a || !href || !href.startsWith("/") || a.getAttribute("target")) return;
+      e.preventDefault();
+      if (menu) menu.style.display = "none";
+      navigate({ to: href });
+    };
+    root.addEventListener("click", onClick);
+
+    resize();
+    const imgs = Array.from(root.querySelectorAll("img"));
+    imgs.forEach((i) => i.addEventListener("load", resize));
+    window.addEventListener("resize", resize);
+    const t = window.setInterval(resize, 400);
+    const stop = window.setTimeout(() => window.clearInterval(t), 4000);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      root.removeEventListener("click", onClick);
+      imgs.forEach((i) => i.removeEventListener("load", resize));
+      cleanups.forEach((cleanup) => cleanup());
+      window.clearInterval(t);
+      window.clearTimeout(stop);
+    };
+  }, [html, navigate]);
+
+  return <div id="ps-legacy" ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+}
