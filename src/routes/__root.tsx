@@ -77,20 +77,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Phantom Secure — Encrypted Mobile Communications" },
+      { title: "Phantom Secure" },
       {
         name: "description",
         content:
-          "Hardened devices and end-to-end encrypted messaging for organizations that cannot afford a leak.",
+          "A modern web application for showcasing services and company information.",
       },
-      { property: "og:title", content: "Phantom Secure — Encrypted Mobile Communications" },
+      { property: "og:title", content: "Phantom Secure" },
       {
         property: "og:description",
-        content: "Hardened devices and end-to-end encrypted messaging built for zero exposure.",
+        content: "A modern web application for showcasing services and company information.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Phantom Secure" },
+      { name: "twitter:description", content: "A modern web application for showcasing services and company information." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/rCJnfPSucnN8ItPd2NPuLtFb5l02/social-images/social-1786864412443-social-image.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/rCJnfPSucnN8ItPd2NPuLtFb5l02/social-images/social-1786864412443-social-image.webp" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -110,7 +114,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/ps/mobile.css",
         media: "only screen and (max-width: 480px), only screen and (max-device-width: 480px)",
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
