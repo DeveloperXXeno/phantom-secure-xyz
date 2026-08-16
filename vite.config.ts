@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Use Netlify preset for self-hosted Netlify deploys.
+  // Lovable Cloud builds override this via LOVABLE_NITRO_PRESET, so publishing here still works.
+  nitro: {
+    preset: "netlify",
+  },
 });
