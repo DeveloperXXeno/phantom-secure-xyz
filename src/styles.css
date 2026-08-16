@@ -345,3 +345,24 @@
   .ps-footer-cols { display: none; }
   .ps-copyright { font-size: 2.6vw; text-align: center; }
 }
+
+/* Small disclaimer pinned to the bottom-right corner of the page. */
+.ps-edu-note {
+  position: fixed;
+  right: 0.6rem;
+  bottom: 0.4rem;
+  z-index: 50;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Perf: let the browser skip layout/paint for offscreen legacy tiles. */
+#ps-legacy .footer1,
+#ps-legacy .footer2 {
+  contain: layout paint;
+}

@@ -152,22 +152,39 @@ export function LegacyPage({ html }: { html: string }) {
     };
     root.addEventListener("click", onClick);
 
+    // Coalesce layout work into a single animation frame instead of polling on
+    // a timer, which caused constant reflow (and the scroll jank).
+    let frame = 0;
+    const scheduleResize = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        resize();
+      });
+    };
+
     resize();
     const imgs = Array.from(root.querySelectorAll("img"));
-    imgs.forEach((i) => i.addEventListener("load", resize));
-    window.addEventListener("resize", resize);
-    const t = window.setInterval(resize, 400);
-    const stop = window.setTimeout(() => window.clearInterval(t), 4000);
+    imgs.forEach((i) => i.addEventListener("load", scheduleResize));
+    window.addEventListener("resize", scheduleResize);
+
+    // The preview/embedded frame does not have focus until it is clicked, which
+    // made wheel and keyboard scrolling ignore the first interaction.
+    window.focus();
 
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", scheduleResize);
       root.removeEventListener("click", onClick);
-      imgs.forEach((i) => i.removeEventListener("load", resize));
+      imgs.forEach((i) => i.removeEventListener("load", scheduleResize));
       cleanups.forEach((cleanup) => cleanup());
-      window.clearInterval(t);
-      window.clearTimeout(stop);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, [html, navigate]);
 
-  return <div id="ps-legacy" ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <>
+      <div id="ps-legacy" ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="ps-edu-note">Education purposes</div>
+    </>
+  );
 }
