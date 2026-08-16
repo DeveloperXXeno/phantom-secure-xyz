@@ -56,8 +56,8 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 	</div>
 </div>
 <div style="display:none;background-color: black" class=tile data-nomargin=1 id=player2 >
-    <div id=player align=center>
-	<video id="video" class="video-js vjs-default-skin" controls preload="auto" style='width: 80vw' src="/__l5e/assets-v1/b5ba1542-859f-4116-acc6-043957c39da6/AUdtp.mp4" data-setup="{}"></video>
+    <div id=player align=center style='padding: 2%'>
+	<video id="video" class="video-js vjs-default-skin" controls playsinline preload="metadata" style='width: 80vw; height: 45vw; max-height: 80vh; background: #000' src="/__l5e/assets-v1/b5ba1542-859f-4116-acc6-043957c39da6/AUdtp.mp4" data-setup="{}"></video>
     </div>
 </div>
 
