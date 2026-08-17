@@ -20,3 +20,4 @@ export const Route = createFileRoute("/encrypted-messaging")({
 function Page() {
   return <LegacyPage html={html} />;
 }
+//encrypted page for the phantomsecure website and fixed parts   of it.
