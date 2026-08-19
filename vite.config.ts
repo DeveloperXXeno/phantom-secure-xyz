@@ -12,9 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  // Use Netlify preset for self-hosted Netlify deploys.
+  // Use the Vercel preset for self-hosted Vercel deploys (outputs .vercel/output).
   // Lovable Cloud builds override this via LOVABLE_NITRO_PRESET, so publishing here still works.
   nitro: {
-    preset: "netlify",
+    preset: "vercel",
   },
 });
