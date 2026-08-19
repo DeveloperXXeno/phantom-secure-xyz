@@ -81,18 +81,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "A modern web application for showcasing services and company information.",
+          "Educational archive replica of the Phantom Secure encrypted communications website: encrypted devices, PGP messaging and private chat.",
       },
       { property: "og:title", content: "Phantom Secure" },
       {
         property: "og:description",
-        content: "A modern web application for showcasing services and company information.",
+        content: "Educational archive replica of the Phantom Secure encrypted communications website.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Phantom Secure" },
+      { property: "og:locale", content: "en_US" },
+      { name: "robots", content: "index, follow" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Phantom Secure" },
-      { name: "twitter:description", content: "A modern web application for showcasing services and company information." },
+      { name: "twitter:description", content: "Educational archive replica of the Phantom Secure encrypted communications website." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/rCJnfPSucnN8ItPd2NPuLtFb5l02/social-images/social-1786864412443-social-image.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/rCJnfPSucnN8ItPd2NPuLtFb5l02/social-images/social-1786864412443-social-image.webp" },
     ],
@@ -115,6 +118,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         media: "only screen and (max-width: 900px), only screen and (max-device-width: 900px)",
       },
       { rel: "apple-touch-icon", href: "/favicon.png" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Phantom Secure (archive)",
+          url: "https://phantom-secure-xyz.lovable.app",
+          description:
+            "Archived replica of the Phantom Secure encrypted communications website, reproduced for education purposes.",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

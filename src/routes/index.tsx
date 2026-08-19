@@ -11,10 +11,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: 'Phantom Secure — The World’s Most Trusted Communication Service' },
       { property: "og:description", content: 'Encrypted BlackBerry and Android devices with uncrackable PGP messaging, private chat and worldwide support.' },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://secure-shine-redo.lovable.app/" },
+      { property: "og:url", content: "https://phantom-secure-xyz.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://secure-shine-redo.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://phantom-secure-xyz.lovable.app/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -22,13 +22,13 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Phantom Secure",
-          url: "https://secure-shine-redo.lovable.app/",
+          url: "https://phantom-secure-xyz.lovable.app/",
           description:
             "Archived replica of the Phantom Secure encrypted communications website, reproduced for education purposes.",
           publisher: {
             "@type": "Organization",
             name: "Phantom Secure (archive)",
-            url: "https://secure-shine-redo.lovable.app/",
+            url: "https://phantom-secure-xyz.lovable.app/",
           },
         }),
       },

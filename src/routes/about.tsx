@@ -12,7 +12,11 @@ export const Route = createFileRoute("/about")({
       { property: "og:description", content: 'More than a decade protecting businesses and executives around the globe with a spotless track record.' },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://phantom-secure-xyz.lovable.app/about" },
+      { property: "og:site_name", content: "Phantom Secure" },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "https://phantom-secure-xyz.lovable.app/about" }],
   }),
   component: Page,
 });

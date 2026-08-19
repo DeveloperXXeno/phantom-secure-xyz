@@ -12,7 +12,11 @@ export const Route = createFileRoute("/faq")({
       { property: "og:description", content: 'Answers to common questions about encrypted devices, keys, billing and support.' },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://phantom-secure-xyz.lovable.app/faq" },
+      { property: "og:site_name", content: "Phantom Secure" },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "https://phantom-secure-xyz.lovable.app/faq" }],
   }),
   component: Page,
 });
