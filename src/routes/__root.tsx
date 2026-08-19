@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "/ps/mobile.css",
-        media: "only screen and (max-width: 480px), only screen and (max-device-width: 480px)",
+        media: "only screen and (max-width: 900px), only screen and (max-device-width: 900px)",
       },
       { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
