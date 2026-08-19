@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://phantom-secure-xyz.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -14,7 +13,21 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries: SitemapEntry[] = [{ path: "/", changefreq: "weekly", priority: "1.0" }];
+        const entries: SitemapEntry[] = [
+          { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/our-service", changefreq: "monthly", priority: "0.8" },
+          { path: "/encrypted-messaging", changefreq: "monthly", priority: "0.8" },
+          { path: "/encrypted-chat", changefreq: "monthly", priority: "0.8" },
+          { path: "/packages", changefreq: "monthly", priority: "0.8" },
+          { path: "/buy", changefreq: "monthly", priority: "0.8" },
+          { path: "/start-today", changefreq: "monthly", priority: "0.7" },
+          { path: "/privacy-matters", changefreq: "monthly", priority: "0.6" },
+          { path: "/privacy-articles", changefreq: "monthly", priority: "0.6" },
+          { path: "/opportunities", changefreq: "monthly", priority: "0.5" },
+          { path: "/faq", changefreq: "monthly", priority: "0.6" },
+          { path: "/legal", changefreq: "yearly", priority: "0.3" },
+        ];
 
         const urls = entries.map((e) =>
           [
