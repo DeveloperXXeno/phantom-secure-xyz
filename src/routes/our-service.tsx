@@ -12,7 +12,11 @@ export const Route = createFileRoute("/our-service")({
       { property: "og:description", content: 'Around the clock support, private offshore networks and hardened devices built for confidentiality.' },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://phantom-secure-xyz.lovable.app/our-service" },
+      { property: "og:site_name", content: "Phantom Secure" },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "https://phantom-secure-xyz.lovable.app/our-service" }],
   }),
   component: Page,
 });

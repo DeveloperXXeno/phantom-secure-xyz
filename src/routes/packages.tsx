@@ -12,7 +12,11 @@ export const Route = createFileRoute("/packages")({
       { property: "og:description", content: 'Encrypted device packages for individuals and businesses of every size, with full support included.' },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://phantom-secure-xyz.lovable.app/packages" },
+      { property: "og:site_name", content: "Phantom Secure" },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "https://phantom-secure-xyz.lovable.app/packages" }],
   }),
   component: Page,
 });

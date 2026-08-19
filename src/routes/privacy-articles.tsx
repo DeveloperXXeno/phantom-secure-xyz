@@ -12,7 +12,11 @@ export const Route = createFileRoute("/privacy-articles")({
       { property: "og:description", content: 'News and articles on digital privacy, surveillance and secure communications.' },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://phantom-secure-xyz.lovable.app/privacy-articles" },
+      { property: "og:site_name", content: "Phantom Secure" },
+      { name: "robots", content: "index, follow" },
     ],
+    links: [{ rel: "canonical", href: "https://phantom-secure-xyz.lovable.app/privacy-articles" }],
   }),
   component: Page,
 });
