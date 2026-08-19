@@ -52,12 +52,12 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 		<img id=main2 src="/ps/message_1.png" style='width: 100%'>
 	</div>
 	<div style="position: absolute; top: 10%; width: 50%; right: 0%;">
-		<a href="javascript:" onClick='$("#player2").toggle();videojs("video").play();'><img src="/ps/message_2.png" style='width: 70%'></a>
+		<a href="javascript:" data-video-toggle="#player2"><img src="/ps/message_2.png" style='width: 70%'></a>
 	</div>
 </div>
-<div style="display:none;background-color: black" class=tile data-nomargin=1 id=player2 >
+<div style="display:none;background-color:#000" id=player2>
     <div id=player align=center style='padding: 2%'>
-	<video id="video" class="video-js vjs-default-skin" controls playsinline preload="metadata" style='width: 80vw; height: 45vw; max-height: 80vh; background: #000' src="/__l5e/assets-v1/b5ba1542-859f-4116-acc6-043957c39da6/AUdtp.mp4" data-setup="{}"></video>
+	<video id="video" controls playsinline preload="metadata" style='width:100%; max-width:1100px; aspect-ratio:16/9; height:auto; background:#000; display:block; margin:0 auto' src="/__l5e/assets-v1/b5ba1542-859f-4116-acc6-043957c39da6/AUdtp.mp4"></video>
     </div>
 </div>
 
