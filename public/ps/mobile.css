@@ -94,3 +94,18 @@ li.mmh  {
 
 .cartform td { color: #828282; font-size: 1.2vw; }
 
+
+/* --- Phone readability pass ------------------------------------------- */
+.text, .textl, .textb, .textlb, .smalltext1 { font-size: 3vw; line-height: 1.6; }
+.title, .title2 { font-size: 5.5vw; }
+.titleb, .titleb2 { font-size: 6vw; }
+.titlel, .titlelb { font-size: 5.5vw; }
+.btn { font-size: 4vw; }
+.inputform td, .orderform td, .orderform th, .cartform td { font-size: 3.4vw; }
+.inputform input, .orderform input, .inputform textarea, .orderform textarea {
+  height: auto; width: 100%; box-sizing: border-box; font-size: 3.6vw; padding: 2.5vw;
+}
+#ps-legacy td, #ps-legacy td a { font-size: 3.2vw; line-height: 1.7; }
+#ps-legacy input, #ps-legacy select, #ps-legacy textarea, #ps-legacy button { font-size: 3.6vw; max-width: 100%; }
+#ps-legacy #player { padding: 0 !important; }
+#ps-legacy #video { width: 100% !important; }
