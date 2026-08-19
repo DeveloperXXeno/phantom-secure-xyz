@@ -74,6 +74,28 @@ export function LegacyPage({ html }: { html: string }) {
     burger?.addEventListener("click", toggleMenu);
     if (burger) cleanups.push(() => burger.removeEventListener("click", toggleMenu));
 
+    // Dedicated, reliable video toggle (replaces the archived jQuery/video.js call).
+    root.querySelectorAll<HTMLElement>("[data-video-toggle]").forEach((trigger) => {
+      const selector = trigger.getAttribute("data-video-toggle") ?? "";
+      const onToggle = (event: Event) => {
+        event.preventDefault();
+        const panel = root.querySelector<HTMLElement>(selector);
+        if (!panel) return;
+        const video = panel.querySelector("video");
+        const isHidden = getComputedStyle(panel).display === "none";
+        if (isHidden) {
+          panel.style.display = "block";
+          panel.scrollIntoView({ behavior: "smooth", block: "center" });
+          void video?.play().catch(() => undefined);
+        } else {
+          video?.pause();
+          panel.style.display = "none";
+        }
+      };
+      trigger.addEventListener("click", onToggle);
+      cleanups.push(() => trigger.removeEventListener("click", onToggle));
+    });
+
     // Reimplement the small, known subset of jQuery actions used by the archive.
     root.querySelectorAll<HTMLElement>("[onclick]").forEach((element) => {
       const action = element.getAttribute("onclick") ?? "";
