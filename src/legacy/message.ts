@@ -57,7 +57,7 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 </div>
 <div style="display:none;background-color:#000" id=player2>
     <div id=player align=center style='padding: 2%'>
-	<video id="video" controls playsinline preload="metadata" style='width:100%; max-width:1100px; aspect-ratio:16/9; height:auto; background:#000; display:block; margin:0 auto' src="/__l5e/assets-v1/b5ba1542-859f-4116-acc6-043957c39da6/AUdtp.mp4"></video>
+	<video id="video" controls playsinline preload="metadata" style='width:100%; max-width:1100px; aspect-ratio:16/9; height:auto; background:#000; display:block; margin:0 auto' src="/ps/encrypted-messaging.mp4"></video>
     </div>
 </div>
 
