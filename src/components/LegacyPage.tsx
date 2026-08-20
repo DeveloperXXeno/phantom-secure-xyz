@@ -203,10 +203,5 @@ export function LegacyPage({ html }: { html: string }) {
     };
   }, [html, navigate]);
 
-  return (
-    <>
-      <div id="ps-legacy" ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
-      <div className="ps-edu-note">Education purposes</div>
-    </>
-  );
+  return <div id="ps-legacy" ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
 }

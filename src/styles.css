@@ -346,35 +346,6 @@
   .ps-copyright { font-size: 2.6vw; text-align: center; }
 }
 
-/* Small disclaimer pinned to the bottom-right corner of the page. */
-.ps-edu-note {
-  position: fixed;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  z-index: 50;
-  font-family: "Lato", ui-sans-serif, system-ui, sans-serif;
-  font-size: 9px;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: rgba(109, 207, 246, 0.85);
-  background: rgba(0, 0, 0, 0.62);
-  border: 1px solid rgba(109, 207, 246, 0.35);
-  padding: 4px 8px;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
-  pointer-events: none;
-}
-
-@media only screen and (max-width: 900px) {
-  .ps-edu-note {
-    font-size: 8px;
-    padding: 3px 6px;
-    right: 0.35rem;
-    bottom: 0.35rem;
-  }
-}
-
 /* Perf: let the browser skip layout/paint for offscreen legacy tiles. */
 #ps-legacy .footer1,
 #ps-legacy .footer2 {
