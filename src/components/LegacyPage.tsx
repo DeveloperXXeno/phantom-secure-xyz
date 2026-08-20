@@ -97,6 +97,20 @@ export function LegacyPage({ html }: { html: string }) {
     });
 
     // Reimplement the small, known subset of jQuery actions used by the archive.
+    // Order page: "add to order" writes the chosen quantity into the summary.
+    root.querySelectorAll<HTMLElement>("[data-add-to-order]").forEach((button) => {
+      const addToOrder = () => {
+        const model = root.querySelector<HTMLSelectElement>("#model")?.value ?? "1";
+        const unit = root.querySelector<HTMLSelectElement>("#unit")?.value ?? "1";
+        const cell = root.querySelector<HTMLElement>(`#od${model}`);
+        const hidden = root.querySelector<HTMLInputElement>(`#quantity${model}`);
+        if (cell) cell.textContent = unit;
+        if (hidden) hidden.value = unit;
+      };
+      button.addEventListener("click", addToOrder);
+      cleanups.push(() => button.removeEventListener("click", addToOrder));
+    });
+
     root.querySelectorAll<HTMLElement>("[onclick]").forEach((element) => {
       const action = element.getAttribute("onclick") ?? "";
       element.removeAttribute("onclick");
