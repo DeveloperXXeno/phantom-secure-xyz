@@ -39,114 +39,129 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 
 
 
-<div data-nomargin=1 >
+<div data-nomargin=1 class="ps-order-wrap">
 
-        <div class="titlelb" align=center><span style='color:#cbb559'>Contact Sales</span></div>
-        <center>
-        <div class="textlb" style='width:80%; align:center; text-align: center;'>
-        Please fill out the form below and your order will be directed to our sales team or local distributor.<br>
-All information is confidential and will be destroyed when no longer needed. <br>
-Payments are also not linked to devices. A Sales Representative will contact you.
-<p>
-        </div>
-</div>
+	<div class="ps-order-head">
+		<div class="titlelb"><span style='color:#cbb559'>Contact Sales</span></div>
+		<p class="ps-order-lead">Please fill out the form below and your order will be directed to our sales team or local distributor. All information is confidential and will be destroyed when no longer needed. Payments are also not linked to devices. A Sales Representative will contact you.</p>
+	</div>
 
+<form method=POST class="ps-order-form">
+	<div class="ps-order-grid">
 
+		<section class="ps-card">
+			<h3 class="ps-card-title">Order Information</h3>
+			<label class="ps-label" for="model">Model</label>
+			<select class="ps-field" name=model id=model onChange='$("#modelimg").attr("src","img_pd_"+$(this).val()+".png");'>
+				<option value=1>PS Classic</option>
+				<option value=2>PS Android</option>
+			</select>
 
-<form method=POST>
-	<table class=orderform width=85% bgcolor="#333333" align=center border=0 cellpadding=25>
-	<tr><td valign=bottom width=70%>
+			<label class="ps-label" for="unit">Quantity</label>
+			<div class="ps-inline">
+				<select class="ps-field" name=unit id=unit>
+					<option value=1>1 unit</option>
+					<option value=2>2 units</option>
+					<option value=3>3 units</option>
+					<option value=4>4 units</option>
+					<option value=5>5 units</option>
+					<option value=6>6 units</option>
+					<option value=7>7 units</option>
+					<option value=8>8 units</option>
+					<option value=9>9 units</option>
+					<option value=10>10 units</option>
+				</select>
+				<img class="ps-add-btn" src="/ps/add_to_order.png" alt="Add to order" onClick='$("#od"+$("#model").val()).html($("#unit").val());$("#quantity"+$("#model").val()).val($("#unit").val());'>
+			</div>
 
-		<table class=cartform align=center width=100%>
-			<tr>
-				<td valign=bottom style='color:#bd9f03'><font color="#998675"  width=35%>ORDER INFORMATION</font><p>
+			<label class="ps-label" for="shipping">Shipping Address</label>
+			<input class="ps-field" type=text id=shipping name=shipping>
 
-Model<br>
-<select style='width:80%' name=model id=model onChange='$("#modelimg").attr("src","img_pd_"+$(this).val()+".png");'>
-	<option value=1>PS Classic</option>
-	<option value=2>PS Android</option>
-</select><br>
-Quantity<br>
-<select style='width:30%' name=unit id=unit>
-<option value=1>1 unit</option>
-<option value=2>2 units</option>
-<option value=3>3 units</option>
-<option value=4>4 units</option>
-<option value=5>5 units</option>
-<option value=6>6 units</option>
-<option value=7>7 units</option>
-<option value=8>8 units</option>
-<option value=9>9 units</option>
-<option value=10>10 units</option>
-</select> &nbsp;&nbsp;<img align=absmiddle src="/ps/add_to_order.png" width=40% onClick='$("#od"+$("#model").val()).html($("#unit").val());$("#quantity"+$("#model").val()).val($("#unit").val());'><br>
-Shipping Address<br>
-<input type=text style='width:80%'  name=shipping><br>
-Country<br>
-<select type=text class="countries" id="countryId" style='width:80%' name=country></select><br>
-State<br>
-<select type=text class="states" id="stateId" style='width:80%' name=state></select><br>
-City<br>
-<input type=text class="cities" id="cityId" style='width:80%' name=state><br>
-ZIP<br>
-<input type=text style='width:80%'  name=postal><br>
-				</td>
-				
-				<td align=center width=30% valign=middle>
-				<img src="/ps/img_order1.png" style='width:100%'><br><br>
-				<img src="/ps/img_pd_1.png" style='width:100%' id=modelimg>
-<br>
-<table width=100% cellspacing=0 cellpadding=0 style='color:#3f3301'>
-<tr><td style='color:#3f3301' bgcolor='#bd9f03'>Order Details</td><td style='color:#3f3301'  bgcolor="#bd9f03" align=center>Qty</td></tr>
-<tr><td style='color:#3f3301'  bgcolor=white>PS Classic</td><td style='color:#3f3301'  bgcolor=white id=od1 align=center>0</td></tr>
-<tr><td style='color:#3f3301'  bgcolor='#ebebeb'>PS Android</td><td style='color:#3f3301'  bgcolor='#ebebeb' id=od2 align=center>0</td></tr>
-</table>
+			<label class="ps-label" for="countryId">Country</label>
+			<select class="ps-field countries" id="countryId" name=country></select>
 
+			<label class="ps-label" for="stateId">State</label>
+			<select class="ps-field states" id="stateId" name=state></select>
 
-				</td>
-			
-				<td  style='color:#bd9f03' align=right width=35% valign=top>
-					<font color="#998675">CONTACT INFORMATION</font><p>
+			<label class="ps-label" for="cityId">City</label>
+			<input class="ps-field cities" type=text id="cityId" name=city>
 
-	
-First Name<br>
-<input type=text style='width:80%' name=firstname><br>
-Last Name<br>
-<input type=text style='width:80%' name=lastname><br>
-Email<br>
-<input type=text style='width:80%'  name=email><br>
-Phone<br>
-<input type=text style='width:80%'  name=telephone><br>
-Notes<br>
-<textarea style='width:80%; height: 10vw;' name=notes ></textarea>
+			<label class="ps-label" for="postal">ZIP</label>
+			<input class="ps-field" type=text id=postal name=postal>
+		</section>
 
-	</td></tr>
+		<section class="ps-card ps-card-summary">
+			<h3 class="ps-card-title">Your Device</h3>
+			<img class="ps-order-art" src="/ps/img_order1.png" alt="Phantom Secure order">
+			<img class="ps-order-art" src="/ps/img_pd_1.png" id=modelimg alt="Selected model">
+			<table class="ps-summary">
+				<tr><th>Order Details</th><th class="ps-qty">Qty</th></tr>
+				<tr><td>PS Classic</td><td class="ps-qty" id=od1>0</td></tr>
+				<tr class="alt"><td>PS Android</td><td class="ps-qty" id=od2>0</td></tr>
+			</table>
+			<ul class="ps-trust">
+				<li><span class="ps-tick">&#10003;</span> Verified ID required</li>
+				<li><span class="ps-tick">&#10003;</span> Encrypted end to end</li>
+				<li><span class="ps-tick">&#10003;</span> No records stored</li>
+				<li><span class="ps-tick">&#10003;</span> 6 months subscription included</li>
+			</ul>
+		</section>
 
-	</table>
-	</td></tr></table>
-	
-	<table class=cartform align=center width=85% bgcolor="#333333" border=0 cellpadding=0 cellspacing=0>	
-	<tr><td style='color: white;  padding-left:1.5%; padding-right: 1.5%' colspan=3>
-		<table width=100% cellpadding=0 cellspacing=15>
-		<tr>
-		<td class=smalltext1>
-		All devices are locked down for Maximum Security. Device to device encrypted communication where No information exists or is stored. Comes with 6 Months Subscription Included. <font color='#6dcff6'>All transactions are safe and secure. All information provided will only be used to complete the order, NO record will be stored once order is completed.</font>
-		</td>
-		<td valign=middle>
-				<input type=image id=ordbtn style='height: 3vw; padding:0px' align=right src="/ps/order.png">
-		</td>
-		</tr>
-		</table>
+		<section class="ps-card">
+			<h3 class="ps-card-title">Contact Information</h3>
+			<label class="ps-label" for="firstname">First Name</label>
+			<input class="ps-field" type=text id=firstname name=firstname>
+
+			<label class="ps-label" for="lastname">Last Name</label>
+			<input class="ps-field" type=text id=lastname name=lastname>
+
+			<label class="ps-label" for="email">Email</label>
+			<input class="ps-field" type=email id=email name=email>
+
+			<label class="ps-label" for="telephone">Phone</label>
+			<input class="ps-field" type=tel id=telephone name=telephone>
+
+			<label class="ps-label" for="notes">Notes</label>
+			<textarea class="ps-field ps-textarea" id=notes name=notes></textarea>
+		</section>
+
+		<section class="ps-card ps-card-verify">
+			<h3 class="ps-card-title">Identity Verification</h3>
+			<p class="ps-verify-note">Devices are only released to verified buyers. Your documents are reviewed by our sales team and destroyed once the order is completed.</p>
+			<label class="ps-label" for="idtype">ID Type</label>
+			<select class="ps-field" id=idtype name=idtype>
+				<option value=passport>Passport</option>
+				<option value=license>Driver&#39;s License</option>
+				<option value=national>National ID Card</option>
+			</select>
+
+			<label class="ps-label" for="idnumber">ID Number</label>
+			<input class="ps-field" type=text id=idnumber name=idnumber>
+
+			<label class="ps-label" for="idcountry">Country of Issue</label>
+			<input class="ps-field" type=text id=idcountry name=idcountry>
+
+			<label class="ps-label" for="iddoc">Upload ID Document</label>
+			<input class="ps-field ps-file" type=file id=iddoc name=iddoc accept="image/*,.pdf">
+
+			<label class="ps-check"><input type=checkbox name=idconsent value=1> I confirm the details above are accurate and consent to identity verification.</label>
+			<div class="ps-badge"><span class="ps-tick">&#10003;</span> Verified ID &nbsp;&middot;&nbsp; Encrypted upload &nbsp;&middot;&nbsp; Destroyed after review</div>
+		</section>
+	</div>
+
+	<div class="ps-order-footer">
+		<p class="smalltext1">All devices are locked down for Maximum Security. Device to device encrypted communication where No information exists or is stored. Comes with 6 Months Subscription Included. <span style='color:#6dcff6'>All transactions are safe and secure. All information provided will only be used to complete the order, NO record will be stored once order is completed.</span></p>
+		<input type=image class="ps-submit" id=ordbtn src="/ps/order.png" alt="Place order">
 		<input type=hidden name=quantity1 id=quantity1>
 		<input type=hidden name=quantity2 id=quantity2>
-		</td>
-	</tr>
-	<tr><td colspan=3 style='color: black; background-color: #00bff3; padding-left:3%; padding-right: 3%; line-height: 1.8vw; padding-top: 1vw; padding-bottom: 1vw'>
-All information received is considered private and will not be shared with anyone outside our Sales Team reviewing your inquiry.<br>
-If no further consideration is made it will be destroyed.
-	</td></tr>
-</table>
+	</div>
+
+	<div class="ps-order-note">
+		All information received is considered private and will not be shared with anyone outside our Sales Team reviewing your inquiry.<br>
+		If no further consideration is made it will be destroyed.
+	</div>
 </form>
-</center>
+</div>
 </div>
 <br><br>
 <!--
