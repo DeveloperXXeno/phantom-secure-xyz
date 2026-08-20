@@ -71,7 +71,7 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 					<option value=9>9 units</option>
 					<option value=10>10 units</option>
 				</select>
-				<img class="ps-add-btn" src="/ps/add_to_order.png" alt="Add to order" onClick='$("#od"+$("#model").val()).html($("#unit").val());$("#quantity"+$("#model").val()).val($("#unit").val());'>
+				<img class="ps-add-btn" src="/ps/add_to_order.png" alt="Add to order" data-add-to-order=1>
 			</div>
 
 			<label class="ps-label" for="shipping">Shipping Address</label>
