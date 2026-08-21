@@ -491,3 +491,138 @@
   #ps-legacy .ps-order-note { font-size: 14px; }
   #ps-legacy .ps-submit { width: 150px; }
 }
+
+/* ---------------------------------------------------------------------------
+   Modern sections used by the Opportunities and Our Service pages.
+   Scoped to the legacy archive wrapper so nothing else is affected.
+--------------------------------------------------------------------------- */
+#ps-legacy .ps-section { background: #0b0b0d; padding: 4rem 1.5rem; }
+#ps-legacy .ps-section.alt { background: #111114; }
+#ps-legacy .ps-wrap { max-width: 1120px; margin: 0 auto; }
+
+#ps-legacy .ps-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(109, 207, 246, 0.25);
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end;
+}
+#ps-legacy .ps-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+#ps-legacy .ps-hero-body { position: relative; padding: 2.5rem; }
+#ps-legacy .ps-eyebrow {
+  font-family: 'Muli', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #6dcff6;
+  margin-bottom: 0.75rem;
+}
+#ps-legacy .ps-h1 {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+#ps-legacy .ps-h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(22px, 3.4vw, 32px);
+  color: #fff;
+  margin: 0 0 1.25rem;
+}
+#ps-legacy .ps-lead {
+  font-family: 'Muli', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #c9c9cd;
+  max-width: 720px;
+  margin: 0;
+}
+#ps-legacy .ps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+#ps-legacy .ps-card {
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+#ps-legacy .ps-card h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  color: #6dcff6;
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+#ps-legacy .ps-card p {
+  font-family: 'Muli', sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #b8b8bd;
+  margin: 0;
+}
+#ps-legacy .ps-media { width: 100%; border-radius: 14px; display: block; margin: 2rem auto 0; }
+#ps-legacy .ps-cta {
+  display: inline-block;
+  margin-top: 1.75rem;
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  background: #6dcff6;
+  color: #062b34 !important;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#ps-legacy .ps-cta.ghost { background: transparent; border: 1px solid #6dcff6; color: #6dcff6 !important; }
+
+/* ---------------------------------------------------------------------------
+   Global phone layout repair for the archived (absolutely positioned) pages.
+--------------------------------------------------------------------------- */
+@media only screen and (max-width: 900px) {
+  #ps-legacy { overflow-x: hidden; }
+  #ps-legacy .tile { height: auto !important; min-height: 0 !important; margin-top: 0 !important; }
+  #ps-legacy .tile > div[style*="absolute"],
+  #ps-legacy .tile div[style*="position: absolute"],
+  #ps-legacy .tile div[style*="position:absolute"] {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+  #ps-legacy img.tileimg[style*="opacity:0"],
+  #ps-legacy img.tileimg[style*="opacity: 0"] { display: none !important; }
+  #ps-legacy img.tileimg { position: relative !important; }
+  #ps-legacy img { max-width: 100%; height: auto; }
+  #ps-legacy table { width: 100% !important; max-width: 100%; }
+  #ps-legacy .textlb, #ps-legacy .textl, #ps-legacy .textb, #ps-legacy .text { width: auto !important; }
+  #ps-legacy .inputform td,
+  #ps-legacy .inputform tr { display: block; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #ps-legacy .inputform input,
+  #ps-legacy .inputform select,
+  #ps-legacy .inputform textarea { width: 100% !important; margin-bottom: 2vw; }
+  #ps-legacy .ps-section { padding: 2.5rem 1rem; }
+  #ps-legacy .ps-hero-body { padding: 1.5rem; }
+  #ps-legacy .ps-hero { min-height: 240px; }
+  #ps-legacy .ps-lead, #ps-legacy .ps-card p { font-size: 15px; }
+  #ps-legacy .footer1 table { display: block; }
+  #ps-legacy .footer1 td { display: block; width: 100% !important; }
+}
