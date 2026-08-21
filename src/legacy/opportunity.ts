@@ -1,4 +1,4 @@
-export const html = `<div class=mmenu style='display: none; position: absolute; width: 100vw; top: 10vw; z-index:100;'>
+const nav = `<div class=mmenu style='display: none; position: absolute; width: 100vw; top: 10vw; z-index:100;'>
 	<div>
 		<ul style='  list-style-type: none; margin: 0; padding: 0; overflow: hidden;'>
 
@@ -25,7 +25,7 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 <div class=topbar>
 <div class=mobile>
   <li class="icon">
-    <a href="javascript:;" style="font-size:6vw;" onClick='$(".mmenu").toggle();'>☰</a>
+    <a href="javascript:;" style="font-size:6vw;">☰</a>
   </li>
 </div>
 <div class="left topicon mhidden">
@@ -33,82 +33,9 @@ export const html = `<div class=mmenu style='display: none; position: absolute; 
 </div>
 <div class="right topicon mhidden">
 <a href="/buy"><img src="/ps/top_5.png" border=0 class=topicon></a><a href="/opportunities"><img src="/ps/top_6.png" border=0 class="topicon mhidden"></a></div>
-</div>
+</div>`;
 
-
-
-
-
-<div class="tile" data-height-factor=1.5>
-	<img src="/ps/images/opp1.png" class=tileimg style='opacity:0' id=bg1>
-	<div style="position: absolute; align:center; width:100%; top: 10%;">
-	<div class="titlelb" align=center style='color:#534741'>Opportunities
-</span></div>
-<center>
-	<div class="textlb" style='width:80%; align:center; text-align: justify;'>
-	
-Phantom Secure's Distributor Program consists of a network of Independent Business Owners (IBO) who provide top end business support for clients around the globe. If you are interested in becoming a Phantom Secure IBO, please fill out the required information below.
-
-<br><br>
-
-
-
-<br clear=all><br clear=all><br clear=all><br clear=all>
-<div style="position: relative;" data-height-factor=2><center>
-	<div style="position: absolute; text-align:left; width:100%;" class=textb>
-
-	<font color="#998675">CONTACT INFORMATION</font> <img src="/ps/images/opp2.png" style='width:2vw'><br>
-	<p>
-	<table style="width: 50%" class=inputform border=0>
-	<tr><td width=30% style='padding-left: 0%'>First Name</td><td><input type=text name=firstname style='width:100%'></td></tr>
-	<tr><td width=30% style='padding-left: 0%'>Last Name</td><td><input type=text name=firstname style='width:100%'></td></tr>
-	<tr><td width=30% style='padding-left: 0%'>Company Name</td><td><input type=text name=firstname style='width:100%'></td></tr>
-	<tr><td width=30% style='padding-left: 0%'>Email</td><td><input type=text name=firstname style='width:100%'></td></tr>
-	<tr><td width=30% style='padding-left: 0%'>Phone</td><td><input type=text name=firstname style='width:100%'></td></tr>
-	</table>
-	<p>
-	<font color="#998675">BUSINESS INFORMATION</font> <img src="/ps/images/opp3.png" style='width:2vw'><br>
-	<p>
-	<table style="width: 80%" class=inputform border=0>
-	<tr><td width=60% style='padding-left: 0%'>Which Country(s) would you like to become an IBO?*</td><td><input type=text style='width:80%'></td></tr>
-	<tr><td width=60% style='padding-left: 0%'>What Country are you from?</td><td><select class="countries" id="countryId" placeholder=country style='width: 80%'></td></tr>
-	<tr><td width=60% style='padding-left: 0%'>In what state / city would the majority of your clients be?*</td><td>
-		<select type=text style='width: 40%' class="states" id="stateId" name=state placeholder=state></select>
-		<input type=text style='width: 40%' class="cities" id="cityId" name=city placeholder=city>
-	</td></tr>
-	<tr><td width=60% style='padding-left: 0%'>Do you have any experience selling private communications? </td><td><input type=radio>Yes <input type=radio> No</td></tr>
-	<tr><td colspan=2 style='padding-left: 0%'>How soon would you be able to offer our service to clients?*</td></tr>
-	<tr><td colspan=2 style='padding-left: 0%'><input type=text style='width:100%'></td></tr>
-	<tr><td colspan=2 style='padding-left: 0%'>Why do you wish to become a Phantom Secure IBO?*</td></tr>
-	<tr><td colspan=2 style='padding-left: 0%'><textarea type=text style='width:100%;' rows=3></textarea></td></tr>
-	<tr><td colspan=2 style='padding-left: 0%'>Why should we consider you as an Phantom Secure IBO?*</td></tr>
-	<tr><td colspan=2 style='padding-left: 0%'><textarea type=text style='width:100%;' rows=3></textarea></td></tr>
-	</table>
-	<table style="width: 80%" class=inputform>
-	<tr><td style='font-size: 1.1vw; color:#6dcff6; padding-left: 0%; line-height: 1.5vw' width=80%>All information received is considered private and will not be shared with anyone outside our Business Development Team reviewing your inquiry. If no further consideration is made it will be destroyed.</td>
-	<td align=right style='position:relative' valign=top>
-	<div style='height: 80%; width: 80%; color:white; top: 10%; overflow:hidden; position: absolute;'>
-	<input type=image src="/ps/send.png" align=right width=100%>
-</div>
-	</td></tr>
-	
-	</table>
-
-</div>
-</div></center>
-	</div>
-</div>
-	<div class="titlel" align=center style='margin-top: -5%; margin-bottom: 10%;'><span style='color: #ffffff; text-transform: uppercase; text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);'>
-	The Worlds Most Trusted<br>
-Communication Service</span><span style='color: #6dcff6'>.</span>
-<br><span class=textb style='font-size: 1.2vw; color: #534741'>
-Thank you for your interest, an associate from our Business Development Team will contact you directly.</span>
-	</div>
-
-
-
-
-<div class=footer1>
+const footer = `<div class=footer1>
 
 <table width=100% cellpadding=10 cellspacing=10 style='padding-left: 5%; padding-right: 5%' class=mhidden>
 <tr>
@@ -146,6 +73,102 @@ Thank you for your interest, an associate from our Business Development Team wil
 <img src="/ps/bottom_1.png">
 </div>
 <div class=right>
-<!--<img src="/ps/bottom_2.png">-->
 </div>
 </div>`;
+
+export const html = `${nav}
+
+<div class="ps-section">
+	<div class="ps-wrap">
+		<div class="ps-hero">
+			<img src="/ps/images/opp-hero.jpg" alt="Global distributor network for encrypted devices" width="1600" height="900" fetchpriority="high" decoding="async">
+			<div class="ps-hero-body">
+				<div class="ps-eyebrow">Opportunities</div>
+				<h1 class="ps-h1">Become an Independent Business Owner</h1>
+				<p class="ps-lead">Our Distributor Program is a global network of Independent Business Owners who deliver top-end support to clients in their own market. If you would like to represent us in your region, tell us about yourself below.</p>
+			</div>
+		</div>
+
+		<div class="ps-grid">
+			<div class="ps-card">
+				<h3>Protected territory</h3>
+				<p>IBOs operate their own region with direct access to our Business Development Team.</p>
+			</div>
+			<div class="ps-card">
+				<h3>Full onboarding</h3>
+				<p>Product training, provisioning tools and sales material are provided from day one.</p>
+			</div>
+			<div class="ps-card">
+				<h3>Discreet by design</h3>
+				<p>Every inquiry is reviewed privately and destroyed if no further consideration is made.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="ps-section alt">
+	<div class="ps-wrap">
+		<h2 class="ps-h2">Contact information</h2>
+		<div class="ps-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top:1.25rem">
+			<div class="ps-card">
+				<h3>About you</h3>
+				<p>
+				<label class="ps-label" for="opp-first">First name</label>
+				<input class="ps-field" id="opp-first" name="firstname" type="text" autocomplete="given-name">
+				<label class="ps-label" for="opp-last">Last name</label>
+				<input class="ps-field" id="opp-last" name="lastname" type="text" autocomplete="family-name">
+				<label class="ps-label" for="opp-company">Company name</label>
+				<input class="ps-field" id="opp-company" name="company" type="text" autocomplete="organization">
+				</p>
+			</div>
+			<div class="ps-card">
+				<h3>Reach you</h3>
+				<p>
+				<label class="ps-label" for="opp-email">Email</label>
+				<input class="ps-field" id="opp-email" name="email" type="email" autocomplete="email">
+				<label class="ps-label" for="opp-phone">Phone</label>
+				<input class="ps-field" id="opp-phone" name="phone" type="tel" autocomplete="tel">
+				<label class="ps-label" for="opp-country">What country are you from?</label>
+				<select class="ps-field countries" id="countryId" name="country"></select>
+				</p>
+			</div>
+			<div class="ps-card">
+				<h3>Your market</h3>
+				<p>
+				<label class="ps-label" for="opp-target">Which country(s) would you like to cover?</label>
+				<input class="ps-field" id="opp-target" name="target" type="text">
+				<label class="ps-label" for="stateId">State / region</label>
+				<select class="ps-field states" id="stateId" name="state"></select>
+				<label class="ps-label" for="cityId">City</label>
+				<input class="ps-field cities" id="cityId" name="city" type="text">
+				</p>
+			</div>
+		</div>
+
+		<div class="ps-card" style="margin-top:1.25rem">
+			<h3>Business background</h3>
+			<p>
+			<label class="ps-label">Do you have experience selling private communications?</label>
+			<span class="ps-lead" style="font-size:14px"><input type="radio" name="exp" value="yes" id="exp-yes"> <label for="exp-yes">Yes</label> &nbsp; <input type="radio" name="exp" value="no" id="exp-no"> <label for="exp-no">No</label></span>
+			<label class="ps-label" for="opp-when">How soon could you offer our service to clients?</label>
+			<input class="ps-field" id="opp-when" name="timeline" type="text">
+			<label class="ps-label" for="opp-why">Why do you wish to become an IBO?</label>
+			<textarea class="ps-field" id="opp-why" name="why" rows="3"></textarea>
+			<label class="ps-label" for="opp-consider">Why should we consider you?</label>
+			<textarea class="ps-field" id="opp-consider" name="consider" rows="3"></textarea>
+			</p>
+			<a class="ps-cta" href="/start-today">Submit inquiry</a>
+		</div>
+
+		<div class="ps-order-note" style="margin-top:1.5rem">All information received is private and is only seen by the Business Development Team reviewing your inquiry. If no further consideration is made it is destroyed.</div>
+	</div>
+</div>
+
+<div class="ps-section">
+	<div class="ps-wrap" style="text-align:center">
+		<h2 class="ps-h2">The world's most trusted communication service<span style="color:#6dcff6">.</span></h2>
+		<p class="ps-lead" style="margin:0 auto">Thank you for your interest &mdash; an associate from our Business Development Team will contact you directly.</p>
+	</div>
+</div>
+
+${footer}`;
